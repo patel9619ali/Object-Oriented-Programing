@@ -93,4 +93,60 @@ let Person = function(firstN,lastN,age){
       console.log(2022 - this.birthYear);
   }
   namingPerson1.ageToday();
+
   
+
+//   Static Method with old way
+
+let PersonOld = function(name,year){
+    this.bname = name;
+    this.byear = year;
+}
+
+let PersonSelf = new PersonOld('Ali', 1999);
+console.log(PersonSelf);
+PersonOld.prototype.calAge = function(){
+    console.log(2022-this.byear )
+}
+// static method it will go in construtor not in prototype
+PersonOld.hey = 'hello';
+PersonOld.hey;
+PersonSelf.calAge();
+
+// Static Method with new ways
+
+class PersonNew { 
+    constructor(name,age){
+        this.myname = name;
+        this.myage = age;
+    }
+    calAge(){
+        console.log(2022-this.myage);
+        console.log(this);
+
+        
+    }
+    static ageBy() {
+        console.log(2037-this.myage);
+        console.log(this);
+    }
+}
+let PersonNewSelf = new PersonNew('Ali',1999);
+console.log(PersonNewSelf);
+PersonNewSelf.calAge();
+PersonNew.ageBy();
+
+
+// Object Craeat method 
+//  This doenst include protoype or constructor function but give result
+
+let objCre = {
+    init (name,age){
+      this.Aname = name;
+      this.Aage = age;
+    }
+}
+
+let creatingObj = Object.create(objCre);
+creatingObj.init('ALi',2);
+console.log(creatingObj)
