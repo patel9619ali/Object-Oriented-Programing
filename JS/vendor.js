@@ -214,3 +214,89 @@ let adminPanel = new Admin('Ishaq',42343,'Ali');
 console.log(adminPanel);
 adminPanel.emailAddress('ali@ter.com');
 adminPanel.delete();
+
+// let carPet = function(make,speed){
+//    this.carName = make;
+//    this.carSpeed = speed;
+// }
+// carPet.prototype.accelerate = function(){
+//       this.carSpeed += 5;
+//       console.log(`${this.carName} has Speed of ${this.carSpeed} Km/hr`) 
+// }
+// carPet.prototype.brake = function(){
+//       this.carSpeed += 5;
+//       console.log(`${this.carName} has Speed of ${this.carSpeed} Km/hr`) 
+// }
+
+// let carPetNew = new carPet('Tesla',23)
+
+// console.log(carPetNew);
+
+// for (let index = 0; index < 5; index++) {
+//     if(index <= 5){
+//       carPetNew.accelerate();
+//     }
+// }
+
+// let carEv = function(make,speed,charge){
+//      carPet.call(this,make,speed);
+//      this.carCharge = charge;
+// }
+
+// carEv.prototype = Object.create(carPet.prototype);
+
+// let carEvNew = new carEv('Tesla',120,23);
+// console.log(carEvNew);
+// carEv.prototype.accelerate = function(){
+//     this.carSpeed += 20;
+//     this.carCharge -= 1;
+//     console.log(`${this.carName} going on a Speed of ${this.carSpeed} Km/hr has a Battery rate of ${this.carCharge}%`) 
+// }
+
+// carEvNew.accelerate();
+
+
+// Inheritance Using Es6 Class
+
+class carPet{
+    constructor(make,speed){
+    this.carName = make;
+    this.carSpeed = speed;
+ }
+ accelerate(){
+    this.carSpeed += 5;
+    console.log(`${this.carName} has Speed of ${this.carSpeed} Km/hr`)
+ }
+ brake(){
+    this.carSpeed -= 5;
+    console.log(`${this.carName} has Speed of ${this.carSpeed} Km/hr`)
+ }
+}
+ 
+ let carPetNew = new carPet('Tesla',23);
+ 
+ console.log(carPetNew);
+ 
+ for (let index = 0; index < 5; index++) {
+     if(index <= 5){
+       carPetNew.accelerate();
+     }
+ }
+ 
+ class carEv extends carPet {
+   constructor(make,speed,charge){
+    // this should be written first which property same of car if no new property then no need to have super as well as constructor function
+    super(make,speed)
+    this.carCharge = charge;
+   }
+   accelerate(){
+    this.carSpeed += 20;
+    this.carCharge -= 1;
+    console.log(`${this.carName} going on a Speed of ${this.carSpeed} Km/hr has a Battery rate of ${this.carCharge}%`) 
+ }
+ } 
+ let carEvNew = new carEv('Tesla',120,23);
+ console.log(carEvNew);
+ 
+ carEvNew.accelerate();
+
