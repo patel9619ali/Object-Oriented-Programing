@@ -180,10 +180,37 @@ class CarsSpeed {
 }
 
 let carNew = new CarsSpeed('BMW', 30);
-console.log(carNew)
+console.log(carNew);
 carNew.accelerate();
-carNew.brake()
-carNew.brake()
-carNew.brake()
-carNew.brake()
-carNew.brake()
+carNew.brake();
+carNew.brake();
+carNew.brake();
+carNew.brake();
+carNew.brake();
+
+// Inheritance Using Constructor
+
+let Student = function(userName,password){
+     this.userName = userName;
+     this.password = password;
+}
+Student.prototype.emailAddress = function(emailAddress){
+    console.log(`${this.userName} Email address is ${emailAddress}`);
+}
+
+let studentPanel = new Student('Ali',12332);
+console.log(studentPanel);
+studentPanel.emailAddress('ali@terbiumsolutions.com');
+
+let Admin = function(userName,password,deleteId){
+    Student.call(this,userName,password);
+    this.idDelete = deleteId;
+}
+Admin.prototype = Object.create(Student.prototype);
+Admin.prototype.delete = function(){
+    console.log(`${this.userName} has been Deleted`);
+}
+let adminPanel = new Admin('Ishaq',42343,'Ali');
+console.log(adminPanel);
+adminPanel.emailAddress('ali@ter.com');
+adminPanel.delete();
