@@ -300,3 +300,114 @@ class carPet{
  
  carEvNew.accelerate();
 
+//  Another class example
+//  class bankListApp {
+//     constructor(name,currency,pin){
+//         this.ownerName = name,
+//         this.ownerCurrency = currency,
+//         this.ownerPin = pin,
+//         this.movements = [],
+//         this.language = navigator.language;
+//         console.log(`Welcome ${this.ownerName} to Our Bank`)
+//     }
+//     // Public Interface
+//     deposite(val){
+//         this.movements.push(val);
+//     }
+//     withdrawl(val){
+//         this.deposite(-val);
+//     }
+//  }
+ 
+//  let bankApp = new bankListApp('Ali' , 'RUP' , 1971);
+//  bankApp.deposite(200);
+//  bankApp.withdrawl(200);
+//  bankApp.deposite(203240);
+//  bankApp.withdrawl(4400);
+//  console.log(bankApp);
+
+//  Data Encapsulation
+
+// it maens to make your data private so that it can be used out side 
+// There are four type of encapsulation in js
+// Public Field
+// Private FIeld
+// Public mathod 
+// Private mathod 
+
+// Public field means heiding your data just by giving _ as a prifix so when you acces it from out side you can know that it is a field which is public but cant be touch
+
+// Private field means making your data truly  private so you can acces it from outside it is done by using "#" symbol as a prefix
+
+// 1 Public example
+// Here we have used it with _ as a prefix so we know it should not be altered
+// class bankListApp {
+//     _movements = [];
+//     _language = navigator.language;
+//     constructor(name,currency,pin){
+//         this.ownerName = name,
+//         this.ownerCurrency = currency,
+//         this.ownerPin = pin,
+//         console.log(`Welcome ${this.ownerName} to Our Bank`)
+//     }
+//     // Public Interface
+//     deposite(val){
+//         this._movements.push(val);
+//     }
+//     withdrawl(val){
+//         this.deposite(-val);
+//     }
+//  }
+ 
+//  let bankApp = new bankListApp('Ali' , 'RUP' , 1971);
+//  bankApp.deposite(200);
+//  bankApp.withdrawl(200);
+//  bankApp.deposite(203240);
+//  bankApp.withdrawl(4400);
+//  console.log(bankApp);
+
+
+// 2 Private Field
+class bankListApp {
+    _language = navigator.language;
+    #movements = [];
+    #ownerPin;
+    constructor(name,currency,pin){
+        this.ownerName = name,
+        this.ownerCurrency = currency,
+        this.#ownerPin = pin,
+        console.log(`Welcome ${this.ownerName} to Our Bank`)
+    }
+    getMovement(){
+        return this.#movements;
+    }
+    // Public Interface
+    deposite(val){
+        this.#movements.push(val);
+    }
+    withdrawl(val){
+        this.deposite(-val);
+    }
+    #approveLoan(){
+        return true;
+    }
+    loan(val){
+        if(this.#approveLoan(val)){
+            this.deposite(val);
+        }
+    }
+ }
+ 
+ let bankApp = new bankListApp('Ali' , 'RUP' , 1971);
+ bankApp.deposite(200);
+ bankApp.withdrawl(200);
+ bankApp.deposite(203240);
+ bankApp.withdrawl(4400);
+ console.log(bankApp.getMovement());
+ console.log(bankApp.loan(3000));
+//  Private Method is same as that of private field using #syntex as a prefix
+//  console.log(bankApp.#approveLoan(3000));
+//  bankApp.#movements;
+//  Uncaught SyntaxError: Private field '#movements' must be declared in an enclosing class (at vendor.js:399:9) Error Name
+//  Here if we want to get the class of movement or akter the movement class we cant do it so it will trow as an error
+ console.log(bankApp);
